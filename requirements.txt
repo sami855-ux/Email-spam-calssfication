@@ -1,0 +1,22 @@
+# Core Libraries
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+
+# Text Processing (NLP)
+nltk
+spacy
+textblob
+wordcloud
+
+# Model Deployment
+fastapi
+uvicorn
+
+# Saving & Loading Models
+joblib
+
+# Core Libraries
+pydantic
