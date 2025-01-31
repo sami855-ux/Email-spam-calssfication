@@ -20,4 +20,3 @@ print(classification_report(y_test, y_pred))  # Print detailed classification me
 joblib.dump(model, "models/spam_classifier.pkl")  # Save the trained model
 joblib.dump(vectorizer, "models/vectorizer.pkl")  # Save the vectorizer for text preprocessing
 
-model = joblib.load("models/spam_classifier.pkl")
