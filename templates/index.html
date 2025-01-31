@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Spam Classifier</title>
+    <script>
+      async function submitForm() {
+        const emailText = document.getElementById("emailText").value
+        if (!emailText) {
+          alert("Please enter email text")
+          return
+        }
+        const response = await fetch("/predict/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: emailText }),
+        })
+        const result = await response.json()
+        document.getElementById(
+          "result"
+        ).innerText = `Prediction: ${result.prediction}`
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <h1>Email Spam <br />Classification</h1>
+      <div>
+        <div class="form__group field">
+          <textarea
+            cols="30"
+            rows="10"
+            type="input"
+            class="form__field"
+            placeholder="Name"
+            required=""
+            id="emailText"
+          ></textarea>
+          <label for="name" class="form__label">Email Message</label>
+        </div>
+        <button onclick="submitForm()">Check Spam</button>
+      </div>
+      <div id="result" style="margin-top: 20px"></div>
+    </div>
+  </body>
+</html>

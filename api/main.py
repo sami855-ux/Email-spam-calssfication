@@ -1,24 +1,27 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-import joblib
+from fastapi import FastAPI, Request  
+from fastapi.responses import HTMLResponse  
+from fastapi.templating import Jinja2Templates  
+from fastapi.staticfiles import StaticFiles 
+from pydantic import BaseModel  
+import joblib  
 
-# Load model and vectorizer
-model = joblib.load("C:/Users/samit/OneDrive/Desktop/ml22/Email-spam-calssfication/models/spam_classifier.pkl")
-vectorizer = joblib.load("C:/Users/samit/OneDrive/Desktop/ml22/Email-spam-calssfication/models/vectorizer.pkl")
+# Load model and vectorizer  
+model = joblib.load("C:/Users/samit/OneDrive/Desktop/ml22/Email-spam-calssfication/models/spam_classifier.pkl")  
+vectorizer = joblib.load("C:/Users/samit/OneDrive/Desktop/ml22/Email-spam-calssfication/models/vectorizer.pkl")  
 
-app = FastAPI()
+app = FastAPI()  
+templates = Jinja2Templates(directory="templates")  
+app.mount("/static", StaticFiles(directory="static"), name="static")  
 
-class EmailInput(BaseModel):
-    text: str
+class EmailInput(BaseModel):  
+    text: str  
 
-@app.get("/")  
-def read_root():  
-    return {"message": "Model loaded successfully!"} 
+@app.get("/", response_class=HTMLResponse)  
+async def read_root(request: Request):  
+    return templates.TemplateResponse("index.html", {"request": request})  
 
-@app.post("/predict/")
-def predict_spam(email: EmailInput):
-    transformed_text = vectorizer.transform([email.text])
-    prediction = model.predict(transformed_text)[0]
+@app.post("/predict/")  
+async def predict_spam(email: EmailInput):  
+    transformed_text = vectorizer.transform([email.text])  
+    prediction = model.predict(transformed_text)[0]  
     return {"prediction": "This message is Spam, Be aware" if prediction == 1 else "This message is not Spam, You can read it"}
-
-# Run with: uvicorn api.main:app --reload
