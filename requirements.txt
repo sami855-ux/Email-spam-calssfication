@@ -1,6 +1,6 @@
 # Core Libraries
 pandas
-# numpy
+numpy
 scikit-learn
 matplotlib
 seaborn
