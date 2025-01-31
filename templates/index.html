@@ -2,16 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="../static/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Spam Classifier</title>
+
     <script>
       async function submitForm() {
+        // Get the text input from the textarea
         const emailText = document.getElementById("emailText").value
+
+        // Check if the user entered any text
         if (!emailText) {
-          alert("Please enter email text")
+          alert("Please enter email text") // Show an alert if empty
           return
         }
+
+        // Send a POST request to the backend with the input text
         const response = await fetch("/predict/", {
           method: "POST",
           headers: {
@@ -19,7 +26,11 @@
           },
           body: JSON.stringify({ text: emailText }),
         })
+
+        // Parse the response as JSON
         const result = await response.json()
+
+        // Display the prediction result in the result div
         document.getElementById(
           "result"
         ).innerText = `Prediction: ${result.prediction}`
@@ -29,7 +40,9 @@
   <body>
     <div class="main-wrapper">
       <h1>Email Spam <br />Classification</h1>
+
       <div>
+        <!-- Form input area for entering an email message -->
         <div class="form__group field">
           <textarea
             cols="30"
@@ -42,8 +55,12 @@
           ></textarea>
           <label for="name" class="form__label">Email Message</label>
         </div>
+
+        <!-- Button to trigger spam classification -->
         <button onclick="submitForm()">Check Spam</button>
       </div>
+
+      <!-- Display area for showing the prediction result -->
       <div id="result" style="margin-top: 20px"></div>
     </div>
   </body>
