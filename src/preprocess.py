@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 
 # Load dataset from a CSV file
-def load_data(filename="data/spam.csv"):
+def load_data(filename):
     """
     Load and preprocess the dataset.
 
@@ -74,7 +74,7 @@ def preprocess_data(df):
 
 if __name__ == "__main__":
     # Load the dataset
-    df = load_data()
+    df = load_data("./data/spam.csv")
 
     # Preprocess data and obtain train-test split and vectorizer
     (X_train, X_test, y_train, y_test), vectorizer = preprocess_data(df)
