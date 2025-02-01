@@ -8,7 +8,7 @@ This FastAPI application consists of several key components:
 
 Model and Vectorizer Loading: The application begins by loading the trained spam classification model and the vectorizer using the Joblib library. This setup allows for swift execution of predictions on new email inputs.
 
-python
+```python
 model = joblib.load("./model/spam_classifier.joblib")  
 vectorizer = joblib.load("./model/vectorizer.joblib")
 
@@ -16,7 +16,7 @@ vectorizer = joblib.load("./model/vectorizer.joblib")
 
 An instance of the FastAPI application is created, while templates and static files are configured to enable a rich user interface that displays the prediction results.
 
-python
+```python
 app = FastAPI()  
 templates = Jinja2Templates(directory="templates")  
 app.mount("/static", StaticFiles(directory="static"), name="static")
