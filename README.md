@@ -157,12 +157,12 @@ The classification_report function provides a comprehensive overview of the mode
 
 # Steps for Deployment on Render
 
-step 1: Create a Web Application
-step 2: Create requirements.txt -> This file contains all the libraries my application requires.
-step 3: Version Control with Git -> creating reppository using github and git
-step 4: Create a Render Account
-step 5: Connect Your Repository -> Link my GitHub account and select the repository i created for my spam detection application. Render will automatically deploy the web application each time i push changes to this repository.
-step 6: Configure Your Render Service -> 
+- step 1: Create a Web Application
+- step 2: Create requirements.txt -> This file contains all the libraries my application requires.
+- step 3: Version Control with Git -> creating reppository using github and git
+- step 4: Create a Render Account
+- step 5: Connect Your Repository -> Link my GitHub account and select the repository i created for my spam detection application. Render will automatically deploy the web application each time i push changes to this repository.
+- step 6: Configure Your Render Service -> 
 Service Name: My service a descriptive name.
 Environment: Choose Python.
 Build Command: pip install -r requirements.txt.
