@@ -11,7 +11,7 @@ Model and Vectorizer Loading: The application begins by loading the trained spam
 ```python
 model = joblib.load("./model/spam_classifier.joblib")  
 vectorizer = joblib.load("./model/vectorizer.joblib")
-
+```
 # Web Application Setup
 
 An instance of the FastAPI application is created, while templates and static files are configured to enable a rich user interface that displays the prediction results.
