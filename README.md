@@ -50,6 +50,13 @@ async def predict_spam(email: EmailInput):
 Prediction Logic
 The prediction process involves several steps:
 
+```python
+def predict_email(text):
+    text = vectorizer.transform([text])
+    prediction = model.predict(text)[0]
+    return "Spam" if prediction == 1 else "Ham"
+```
+
 ## Text Preprocessing
 
 The input text is transformed to lower case. Additional preprocessing, such as removing punctuation, can be added as needed.
