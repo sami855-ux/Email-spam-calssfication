@@ -218,6 +218,20 @@ Dummy Classifier Accuracy: 0.8654708520179372
   Build Command: pip install -r requirements.txt.
   Start Command: uvicorn api.app:app --host 0.0.0.0 --port 5000 --reload. the use of api is that main.py is found at the folder of api
 
+
+# Try this message
+
+### For spam
+```json
+{
+text: Dear Winner,  We are pleased to inform you that you have won a cash prize of $1,000,000 in the XYZ Lottery!To claim your prize, please provide your bank details and contact information to process your winnings.  Best regards,  Lottery Coordinator
+}
+```
+### For not spam
+``json
+Hello [User Name],We received a request to reset your password. If you made this request, please click the link below to reset your password:  If you did not request a password reset, you can ignore this message.  Thank you,  The Support Team 
+```
+
 ## Conclusion
 
 This FastAPI application for spam classification illustrates an efficient integration of web technologies with machine learning models. By following a simple structure that includes model loading, a user-friendly interface, and robust error handling, developers can swiftly reproduce and deploy similar projects in the future. With the growing risks of spam in modern communication, such systems are essential to enhance user experiences and improve email management strategies.
