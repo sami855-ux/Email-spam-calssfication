@@ -200,7 +200,10 @@ Support:
 This shows the number of actual occurrences of each class in the test dataset.
 For class 0 (not spam), there are 965 samples.
 For class 1 (spam), there are 150 samples. This slight imbalance can affect the model's performance, especially in terms of recall.
-Overall Metrics
+
+#### comparing it to dummy Classifier
+
+Dummy Classifier Accuracy: 0.8654708520179372
 
 # Steps for Deployment on Render
 
