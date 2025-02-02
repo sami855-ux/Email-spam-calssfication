@@ -155,6 +155,20 @@ The accuracy score is calculated using the accuracy_score function by comparing 
 
 The classification_report function provides a comprehensive overview of the model's performance, reporting precision, recall, F1-score, and support for each class (spam and ham). This detailed report gives insights into how well the model is performing and helps identify areas for improvement.
 
+# Steps for Deployment on Render
+
+step 1: Create a Web Application
+step 2: Create requirements.txt -> This file contains all the libraries my application requires.
+step 3: Version Control with Git -> creating reppository using github and git
+step 4: Create a Render Account
+step 5: Connect Your Repository -> Link my GitHub account and select the repository i created for my spam detection application. Render will automatically deploy the web application each time i push changes to this repository.
+step 6: Configure Your Render Service -> 
+Service Name: My service a descriptive name.
+Environment: Choose Python.
+Build Command: pip install -r requirements.txt.
+Start Command: uvicorn api.app:app --host 0.0.0.0 --port 5000 --reload. the use of api is that main.py is found at the folder of api
+
+
 ## Conclusion
 
 This FastAPI application for spam classification illustrates an efficient integration of web technologies with machine learning models. By following a simple structure that includes model loading, a user-friendly interface, and robust error handling, developers can swiftly reproduce and deploy similar projects in the future. With the growing risks of spam in modern communication, such systems are essential to enhance user experiences and improve email management strategies.
