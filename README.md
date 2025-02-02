@@ -8,6 +8,12 @@ The goal of spam detection is to automatically classify incoming emails as eithe
 
 I used dataset in csv file structure, This dataset is used for training models to classify emails as "spam" or "ham" (non-spam). The effectiveness of the model depends on its ability to accurately distinguish between the two categories.
 
+- DatasetName : spam.csv
+- Source: Kaggle
+- Link to Dataset: https://kaggle.com
+- Retrieval Date: 21/05/2017E.c
+
+
 The dataset can be used with algorithms such as Naive Bayes, Support Vector Machines (SVM), or neural networks to automate the detection of spam emails. But i used Navie Bayes in this project. 
 
  ### Data understanding and exploration is found at the dirctory of notebooks folder
