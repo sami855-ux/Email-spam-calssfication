@@ -145,6 +145,16 @@ model = MultinomialNB()  # Initialize the Naive Bayes model
 model.fit(X_train, y_train)  # Train the model on the training set
 ```
 
+## Model Evaluation metrics
+
+```python
+print("Accuracy:", accuracy_score(y_test, y_pred))  # Print accuracy score  
+print(classification_report(y_test, y_pred))  # Print detailed classification report
+```
+The accuracy score is calculated using the accuracy_score function by comparing y_test (true labels) with y_pred (predicted labels). It shows the overall proportion of correctly classified emails.
+
+The classification_report function provides a comprehensive overview of the model's performance, reporting precision, recall, F1-score, and support for each class (spam and ham). This detailed report gives insights into how well the model is performing and helps identify areas for improvement.
+
 ## Conclusion
 
 This FastAPI application for spam classification illustrates an efficient integration of web technologies with machine learning models. By following a simple structure that includes model loading, a user-friendly interface, and robust error handling, developers can swiftly reproduce and deploy similar projects in the future. With the growing risks of spam in modern communication, such systems are essential to enhance user experiences and improve email management strategies.
