@@ -20,29 +20,31 @@ An instance of the FastAPI application is created, while templates and static fi
 app = FastAPI()  
 templates = Jinja2Templates(directory="templates")  
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
+```
 # Input Model Definition
 
 A Pydantic model named EmailInput is defined to structure the incoming data. This model validates that the input is a string containing the email text.
 
-python
+```python
 class EmailInput(BaseModel):  
- text: str  
+ text: str
+```
 Routing and Logic
 The application implements two main routes:
 
 The root ("/") route renders the home page with an HTML template.
 
-python
+```python
 @app.get("/", response_class=HTMLResponse)  
 async def read_root(request: Request):  
- return templates.TemplateResponse("index.html", {"request": request})  
+ return templates.TemplateResponse("index.html", {"request": request})
+```
 The prediction route ("/predict/") processes the input email, applying preprocessing and utilizing the loaded model for classification.
 
-python
+```python
 @app.post("/predict/")  
 async def predict_spam(email: EmailInput):
-
+```
 # Prediction logic
 
 Prediction Logic
@@ -52,9 +54,11 @@ The prediction process involves several steps:
 
 The input text is transformed to lower case. Additional preprocessing, such as removing punctuation, can be added as needed.
 
-python
+```python
 def preprocess_text(text: str):  
- return text.lower()  
+ return text.lower()
+```
+
 Vectorization: The preprocessed email text is vectorized using the previously loaded vectorizer.
 
 Model Prediction: The model predicts whether the email is spam or not. The output is appropriately formatted and returned in the response.
@@ -63,9 +67,10 @@ Model Prediction: The model predicts whether the email is spam or not. The outpu
 
 To maintain robustness, the application incorporates error handling using FastAPI’s HTTPException. This ensures that any unexpected issues during the prediction process are logged and a user-friendly message is returned.
 
-python
+```python
 except Exception as e:  
  raise HTTPException(status_code=400, detail=f"An error occurred during prediction: {str(e)}")
+```
 
 # Conclusion
 
