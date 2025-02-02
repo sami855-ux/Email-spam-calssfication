@@ -12,16 +12,48 @@ The dataset can be used with algorithms such as Naive Bayes, Support Vector Mach
 
  ### Data understanding and exploration is found at the dirctory of notebooks folder
 
-## Application Structure
+# Machine learning algorithm used in this project
+Since spam detection involves categorizing emails into distinct classes (spam vs. ham), it employs classification algorithms like Naive Bayes, SVM, or logistic regression (note: logistic regression is a classification technique despite its name).
+
+Every dependencies that is used in this project are placed at requirements.txt
+
+# Application Structure
 
 This FastAPI application consists of several key components:
+## Train the dataset
 
 Model and Vectorizer Loading: The application begins by loading the trained spam classification model and the vectorizer using the Joblib library. This setup allows for swift execution of predictions on new email inputs.
 
 ```python
-model = joblib.load("./model/spam_classifier.joblib")  
-vectorizer = joblib.load("./model/vectorizer.joblib")
+# Load and preprocess data  
+df = load_data("./data/spam.csv")  # Load the spam dataset  
+(X_train, X_test, y_train, y_test), vectorizer = preprocess_data(df) # Preprocess and split the data  
+
+# Train Naive Bayes classifier  
+model = MultinomialNB()  # Initialize the Naive Bayes model  
+model.fit(X_train, y_train)  # Train the model on the training set  
+
+# Evaluate model performance  
+y_pred = model.predict(X_test)  # Predict on the test set  
+print("Accuracy:", accuracy_score(y_test, y_pred))  # Print accuracy score  
+print(classification_report(y_test, y_pred))  # Print detailed classification metrics
+
+model = joblib.dump("./model/spam_classifier.joblib")  
+vectorizer = joblib.dump("./model/vectorizer.joblib")
 ```
+
+To visualize it run python src/train.py
+
+## Predict using terminal
+Load the joblib files 
+
+ ```python
+model = joblib.load("./model/spam_classifier.joblib")
+vectorizer = joblib.load("./model/vectorizer.joblib")
+ ```
+
+To visualize it run python src/predict.py
+
 ## Web Application Setup
 
 An instance of the FastAPI application is created, while templates and static files are configured to enable a rich user interface that displays the prediction results.
@@ -101,6 +133,16 @@ try:
     except Exception as e:  
         # Log the exception and return an error response  
         raise HTTPException(status_code=400, detail=f"An error occurred during prediction: {str(e)}")  
+```
+
+## Model selection training details
+
+#### Naive Bayes
+The reason i used this model is that it is straightforward to implement and efficient in terms of computation. It works well with large datasets, and  It’s particularly suited for text classification tasks (like spam detection) because it assumes that the presence of a feature (word) in a class is independent of the presence of any other feature.
+
+```python
+model = MultinomialNB()  # Initialize the Naive Bayes model  
+model.fit(X_train, y_train)  # Train the model on the training set
 ```
 
 ## Conclusion
