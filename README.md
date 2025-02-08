@@ -1,5 +1,7 @@
 # Building a Spam Classifier with FastAPI
 
+Deployed Website Link: https://email-spam-calssfication-5.onrender.com
+
 # Try this message
 
 ### For spam
