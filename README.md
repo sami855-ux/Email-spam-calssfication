@@ -5,17 +5,17 @@ Deployed Website Link: https://email-spam-calssfication-5.onrender.com
 ## How To run this project
 
 step 1: install all the dependencies from requirements.txt using thic command
-    ```python
+```python
     pip install -r requirements.txt
 ```
 step 2: Run the train python file in src folder
-    ```python
+```python
         python src/train.py
 ```
 step 3: Run the predict python file in src folder
-    ```python
+```python
     python src/predict.py
-    ```
+```
     
 ## Try this message
 
