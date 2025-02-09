@@ -12,13 +12,27 @@ step 1: install all the dependencies from requirements.txt using thic command
 ```
 step 2: Run the train python file in src folder
 ```python
-        python src/train.py
+    python src/train.py
 ```
 step 3: Run the predict python file in src folder
 ```python
     python src/predict.py
 ```
-    
+## File Structure
+    .  
+├── api                  # main file found here (main.py)
+├── data                 # csv file for the model  
+├── model                # the outputed model file in joblib formate  
+├── notebooks            # Data exploration file for visualization 
+├── src                  # Train and predict files 
+├── static               # CSS files 
+├── templates            # HTML files 
+├── .gitignore           # for git to ignore some files 
+├── README.md            
+├── Report.pdf           # Report documentation is added  
+└── requirements.txt     # All the dependencies in this project
+
+
 ## Try this message
 
 ### For spam
