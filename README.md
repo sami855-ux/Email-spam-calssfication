@@ -18,6 +18,11 @@ step 3: Run the predict python file in src folder
 ```python
     python src/predict.py
 ```
+step 4: Tor run the main.py (FastAPI)
+```python
+    uvicorn api.main:app --reload
+```
+
 ## File Structure
 ```
 Email-spam-classfication
@@ -33,6 +38,14 @@ Email-spam-classfication
 ├── Report.pdf           # Report documentation is added  
 └── requirements.txt     # All the dependencies in this project
 ```
+
+## Used Tech
+- Python
+- Pandas, numpy for data processing
+- scikit-learn for model training and evaluation
+- matplotlib and seaborn for Data visualization
+- joblib for saving and loading the model
+- FastAPI for model deployment
 
 ## Try this message
 
