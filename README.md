@@ -19,7 +19,8 @@ step 3: Run the predict python file in src folder
     python src/predict.py
 ```
 ## File Structure
-    .  
+```
+Email-spam-classfication
 ├── api                  # main file found here (main.py)
 ├── data                 # csv file for the model  
 ├── model                # the outputed model file in joblib formate  
@@ -31,7 +32,7 @@ step 3: Run the predict python file in src folder
 ├── README.md            
 ├── Report.pdf           # Report documentation is added  
 └── requirements.txt     # All the dependencies in this project
-
+```
 
 ## Try this message
 
